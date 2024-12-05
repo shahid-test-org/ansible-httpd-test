@@ -1,0 +1,19 @@
+---
+# tasks file for webapp
+- name: installing apache2
+  ansible.builtin.apt:
+    name: apache2
+    state: present
+    update_cache: yes
+- name: copying file to web directory
+  ansible.builtin.copy:
+    src: files/index.html
+    dest: /var/www/html/
+    owner: root
+    group: root
+    mode: 0644
+- name: installing docker
+  ansible.builtin.apt:
+    name: docker
+    state: present
+
